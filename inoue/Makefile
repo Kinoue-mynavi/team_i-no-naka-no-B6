@@ -2,4 +2,4 @@ run-c:
 	cd client && npm run dev
 
 run-s:
-	cd application && python server.py
+	cd calc_salary_app && python server.py
