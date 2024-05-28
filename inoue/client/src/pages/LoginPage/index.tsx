@@ -1,12 +1,26 @@
 import React from "react";
 import { PageLayout } from "../../layout/PageLayout";
-import { Link } from "react-router-dom";
+import { FormControl } from "../../components/modules/FormControl";
+import { TextInput } from "../../components/atoms/TextInput";
+import "./style.css"
+import { Button } from "react-bootstrap";
 
 const LoginPage: React.FC = () => {
     return (
         <PageLayout>
-            <h1>Login Page</h1>
-            <Link to="/">ホームに戻る</Link>
+            <h2>ログインページ</h2>
+            <form action="" className="form">
+                <div className="inputs-container">
+                    <FormControl label="ユーザ名">
+                        <TextInput placeholder="ユーザ名を入力" />
+                    </FormControl>
+                    <FormControl label="パスワード">
+                        <TextInput placeholder="パスワードを入力" />
+                    </FormControl>
+
+                    <Button type="submit">ログイン</Button>
+                </div>
+            </form>
         </PageLayout>
     );
 };

@@ -7,3 +7,4 @@ CORS(app)
 import flask_blog.views
 
 app.config.from_object("flask_blog.config")
+app.secret_key = app.config["SECRET_KEY"]
