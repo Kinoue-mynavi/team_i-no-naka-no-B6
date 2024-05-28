@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block body %}
+<form action="{{url_for('back_page')}}" method=post>
+<div class="form-group">
+        <p>{{salary}}<p>
+   
+    <button type="submit" class="btn btn-primary">戻る</button>
+</div>
+</form>
+{% endblock %}
