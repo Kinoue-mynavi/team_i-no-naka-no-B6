@@ -8,11 +8,15 @@ def show_entries():
 @app.route('/login',methods=['GET','POST'])
 def login():
     if request.method=='POST':
+        print(request.form['password'])
+        print(app.config['PASSWORD'])
         if request.form['username']!=app.config['USERNAME']:
             print('ユーザー名が異なります')
         elif request.form['password']!=app.config['PASSWORD']:
+
             print('パスワードが異なります')
         else:
+            print("aaaaaaaaaaaaaaaaaaaaaaaaa")
             return redirect('/')
     return render_template('login.html')
 @app.route('/logout')
