@@ -12,6 +12,12 @@
 </head>
 <body>
     <h1>給与計算アプリ</h1>
+    {% with messages = get_flashed_messages() %}
+        {% for message in messages %}
+            <p class="alert alert-info" role="alert">{{ message }}</p>
+        {% endfor %}
+    {% endwith %}
+
     {% block content %}{% endblock  %}
 </body>
 </html>
