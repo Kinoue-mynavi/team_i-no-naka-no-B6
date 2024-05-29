@@ -1,34 +1,27 @@
+from flask import request,redirect,url_for,render_template,flash,session
 from flask_blog import app
-from flask import request, render_template, redirect, session, flash
+@app.route('/')
 
-# html
-@app.route("/")
 def show_entries():
-   if not session.get("logged_in"):
-       flash("ログインが必要です")
-       return redirect("/login")
-   return render_template("entries/index.html")
+    if not session.get('logged_in'):
+        return redirect(url_for('login'))
+    return render_template('entries/index.html')
 
-@app.route("/login/")
-def show_login():
-    return render_template("/login.html")
-
-@app.route("/login/", methods=["POST"])
+@app.route('/login',methods=['GET','POST'])
 def login():
-    if request.method != "POST":
-        flash("不正なリクエストが送信されました", "failed")
-        return redirect("/")
+    if request.method=='POST':
+        if request.form['username']!=app.config['USERNAME']:
+            flash('ユーザー名が異なります')
+        elif request.form['password']!=app.config['PASSWORD']:
 
-    user_name = request.form['username']
-    password = request.form['password']
-    if user_name == app.config["USERNAME"] or password == app.config["PASSWORD"]:
-        flash("ログインしました！", "success")
-        session.permanent = True
-        session["logged_in"] = "logged_in"
-        return redirect("/")
-
-@app.route("/logout/")
+            flash('パスワードが異なります')
+        else:
+            session['logged_in']=True
+            flash('ログインしました') 
+            return redirect(url_for('show_entries'))
+    return render_template('login.html')
+@app.route('/logout')
 def logout():
-    flash("ログアウトしました！")
-    session.pop("logged_in", None)
-    return redirect("/")
+    session.pop('logged_in',None)
+    flash('ログアウトしました')
+    return redirect(url_for('show_entries'))
