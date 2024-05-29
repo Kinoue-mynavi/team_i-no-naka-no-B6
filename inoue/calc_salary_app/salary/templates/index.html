@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<form method="post">
+    <div>
+        <label for="salary">給与</label>
+        <input type="text" class="form-control" id="salary" name="salary">
+    </div>
+    <button type="submit" class="btn btn-primary">計算する</button>
+</form>
+
+{% endblock  %}

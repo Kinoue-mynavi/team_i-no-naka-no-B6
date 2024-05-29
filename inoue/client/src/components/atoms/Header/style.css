@@ -1,0 +1,25 @@
+.header {
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 16px;
+    align-items: center;
+}
+
+.logo {
+    background-color: whitesmoke;
+    height: 40px;
+    padding-inline: 24px;
+    border-radius: 20px;
+}
+
+.nav {
+    display: flex;
+    gap: 16px;
+}
+
+.nav-list {
+    display: flex;
+    gap: 16px;
+    list-style-type: none;
+}
