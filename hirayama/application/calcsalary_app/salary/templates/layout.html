@@ -10,7 +10,11 @@
     <a class="navbar-brand" href="{{url_for('show_entries')}}">給与計算アプリ</a>
 </nav>
 
-
+{% for message in get_flashed_messages() %}
+        <div class="alert-info" role="alert">
+        {{message}}
+        </div>
+{% endfor %}
 <div class="blog-body">
     {% block body %}{% endblock %}
 </div>
