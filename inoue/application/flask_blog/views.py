@@ -56,3 +56,4 @@ def new():
     create_entry(params_title, params_text)
 
     return redirect(url_for("show_entries"))
+
