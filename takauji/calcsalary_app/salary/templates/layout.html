@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<title>給与計算アプリ</title>
+<title>CalcSalary</title>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
@@ -8,13 +8,22 @@
 
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/">給与計算アプリ</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <a class="navbar-brand" href="{{ url_for('show_entries') }}">給与計算アプリ</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+        data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+        aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            
+        </div>
     </nav>
 
+    <div class="salary-body">
+        {% block body %}{% endblock %}
+    </div>
+    {%for message in get_flashed_messages()%}
+    <div class="alert alert-info"role="alert">
+        {{message}}
+    </div>
+    {%endfor%}
 
-
-    
 </div>
