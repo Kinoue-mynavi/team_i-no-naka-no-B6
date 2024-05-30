@@ -10,7 +10,7 @@ SQLALCHEMY_DATABASE_URI="mysql+pymysql://{user}:{password}@{host}/{database}?cha
 )
 SQLALCHEMY_TRACK_MODIFICATIONS=False
 
-SECRET_KEY = os.urandom(12)
-DEBUG = True
-USERNAME = "testUser"
-PASSWORD = "password"
+DEBUG=True
+SECRET_KEY='secret key'
+USERNAME="testUser"
+PASSWORD="password"
