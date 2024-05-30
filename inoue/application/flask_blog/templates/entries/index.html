@@ -1,5 +1,19 @@
 {% extends "layout.html" %}
 {% block body %}
-投稿がありません
+
+{% if entries | length <= 0 %}
+    <p>投稿がありません</p>
+{% else %}
+    {% for entry in entries %}
+        <div style="padding: 16px; box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);">
+            <div style="display: flex; justify-content: space-between;">
+                <h2 style="font-size: 20px;">{{ entry.title }}</h2>
+                <p>{{ entry.created_at }}</p>
+            </div>
+            <p>{{ entry.text }}</p>
+        </div>
+    {% endfor %}
+{% endif %}
+
 {% endblock %}
 

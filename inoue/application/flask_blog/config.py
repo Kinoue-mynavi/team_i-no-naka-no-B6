@@ -8,9 +8,10 @@ SQLALCHEMY_DATABASE_URI="mysql+pymysql://{user}:{password}@{host}/{database}?cha
         "database": os.getenv("DB_DATABASE","ENSHU")
     }
 )
-SQLALCHEMY_TRACK_MODIFICATIONS=False
 
-DEBUG=True
-SECRET_KEY='secret key'
-USERNAME="testUser"
-PASSWORD="password"
+SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+DEBUG = True
+SECRET_KEY = os.urandom(12)
+USERNAME = "testUser"
+PASSWORD = "password"
