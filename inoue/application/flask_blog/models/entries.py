@@ -14,5 +14,4 @@ class Entry(db.Model):
         self.created_at=datetime.utcnow()
     
     def __repr__(self):
-        return '<Entry id:{} title:{} text:{}>'.format(self.id,self.title,self.text)    
-    
+        return '<Entry id:{} title:{} text:{}>'.format(self.id,self.title,self.text)
