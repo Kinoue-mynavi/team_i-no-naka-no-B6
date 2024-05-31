@@ -26,7 +26,6 @@ def operate_holiday():
         flash(f"日付のテキストは{DEFAULT_TEXT_MAX_LENGTH}文字以内で入力してください")
         return render_template("index.html")
     
-
     if method_value == "upsert": # Method: Create, Update
         upsert_holiday(params_holi_date, params_holi_text)
         flash("更新しましたぁ！！！！！！")
