@@ -2,21 +2,43 @@
 
 {% block content %}
 
-<table border="1">
+<table>
     <tr>
         <th>祝日</th>
         <th>テキスト</th>
     </tr>
-    <tr>
-        <td>データが入ります</td>
-        <td>データが入ります</td>
-    </tr>
-    <tr>
-        <td>データが入ります</td>
-        <td>データが入ります</td>
-    </tr>
+    {% for holiday in holidays %}
+        <tr>
+            <td>{{ holiday.holi_date }}</td>
+            <td>{{ holiday.holi_text }}</td>
+        </tr>
+    {% endfor %}
 </table>
 
 <a href="{{ url_for('show_entry') }}">ホームへ戻る</a>
+
+{% endblock  %}
+
+
+{% block style %}
+
+<style>
+    table {
+        width: 100%;
+        text-align: center;
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+    table th {
+     padding: 10px;
+     background: #e9faf9;
+     border: solid 1px #778ca3;
+    }
+
+    table td {
+     padding: 10px;
+     border: solid 1px #778ca3;
+    }
+</style>
 
 {% endblock  %}

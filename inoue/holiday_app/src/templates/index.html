@@ -2,8 +2,7 @@
 
 {% block content %}
 
-<!-- FIXME: url_forを追加する -->
-<form method="post" class="form">
+<form method="post" class="form" action="{{ url_for('operate_holiday') }}">
     <div class="input-container">
         <label for="holi_date">祝日 日付</label>
         <input type="date" class="form-control" id="holi_date" name="holi_date">
@@ -12,9 +11,9 @@
         <label for="holi_text">祝日 テキスト</label>
         <input type="text" class="form-control" id="holi_text" name="holi_text">
     </div>
-    <button type="submit" class="btn btn-primary">新規登録・更新</button>
-    <!-- FIXME: 削除ボタンを追加する -->
-    <!-- <button type="submit" class="btn btn-primary">削除</button> -->
+
+    <button type="submit" class="btn btn-primary" name="button" value="upsert">新規登録・更新</button>
+    <button type="submit" class="btn btn-primary" name="button" value="delete">削除</button>
 </form>
 
 <button class="btn btn-primary">
