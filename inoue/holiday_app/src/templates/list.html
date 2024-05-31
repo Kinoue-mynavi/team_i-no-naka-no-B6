@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<table border="1">
+    <tr>
+        <th>祝日</th>
+        <th>テキスト</th>
+    </tr>
+    <tr>
+        <td>データが入ります</td>
+        <td>データが入ります</td>
+    </tr>
+    <tr>
+        <td>データが入ります</td>
+        <td>データが入ります</td>
+    </tr>
+</table>
+
+<a href="{{ url_for('show_entry') }}">ホームへ戻る</a>
+
+{% endblock  %}
