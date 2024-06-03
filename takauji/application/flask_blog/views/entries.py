@@ -6,6 +6,7 @@ from flask_blog import app
 from flask_blog.models.entries import Entry
 from flask_blog import db
 from flask_blog.views.views import login_required
+from decimal import Decimal, ROUND_HALF_UP
 
 @app.route('/') #app.routeはURLの指定
 @login_required
@@ -89,9 +90,25 @@ def delete_entry(id):
 #入力された値をcalc_salaryに渡す
 @app.route('/calc_salary',methods=['GET'])
 def calc_salary():
-    return render_template('entries/calc_salary.html',entry="aaaaaa")
+    return render_template('entries/calc_salary.html',entry="entry") 
+    # entry="entry"で値を渡してる
 
 #給与計算の結果を表示
-@app.route('/calc_result',methods=['POST'])
+@app.route('/calc_result',methods=['POST']) #送信されたデータがここに送られてくる
 def calc_result():
-    return render_template('entries/calc_result.html',entry="aaaaaa")
+    salary=int(request.form['salary'])#formにsalaryというnameの付いた値が来るよ（HTML側から来た値を受け取れる）
+    #１００万円以上なら税率が２０%
+    if salary> 1000000:
+        tax_amount = (salary - 1000000) * 0.2 + 100000
+        tax_amount = Decimal(str(tax_amount)).quantize(Decimal("0"), rounding=ROUND_HALF_UP)
+
+    #それ以外なら税率が１０%  
+    else:
+        tax_amount = salary*0.1
+        tax_amount = Decimal(str(tax_amount)).quantize(Decimal("0"), rounding=ROUND_HALF_UP)
+
+    pay_amount = salary - tax_amount
+
+    print("支給額:" + str(pay_amount)+"、税額:" + str(tax_amount))
+
+    return render_template('entries/calc_result.html',salary=salary,pay_amount=pay_amount,tax_amount=tax_amount)
