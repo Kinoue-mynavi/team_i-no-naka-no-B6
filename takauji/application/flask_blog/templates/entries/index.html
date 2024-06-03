@@ -1,4 +1,23 @@
 {%extends"layout.html"%}
 {%block body%}
-投稿がありません
-{%endblock%}
+<ul class="list=group list-group-flash">
+
+{% for entry in entries %} 
+<!-- htmlファイルの中でPythonのfor構文を使う -->
+
+<!-- このentriesがentries.pyの中にあるentriesのこと -->
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">{{entry.title}}</h5> 
+        <!-- entriesというデータベースの中のtitleというデータを持ってくる -->
+        <a href="{{url_for('show_entry',id=entry.id)}}" class="card-link">続きを読む</a>
+        <!-- データベースに登録されているIDを使って番号を決めている　IDは主キー -->
+        <!-- ID（主キー）は唯一無二なので、このIDを使ってデータベース内から記事を検索したりしている -->
+    </div>
+</div>
+{%else%}
+    投稿がありません
+{%endfor%}
+</ul>
+{%endblock%}　
+<!-- 終わり！ -->

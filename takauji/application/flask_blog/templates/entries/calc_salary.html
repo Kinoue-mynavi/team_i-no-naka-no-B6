@@ -1,0 +1,16 @@
+{%extends"layout.html"%}
+<!-- layout.htmlという大元のテンプレを入れるよ -->
+{%block body%}
+<form action="/calc_result" method=post>
+    <div class="form-group">
+        <label for="InputTitle">給与</label>
+        <input type="number" class="form-control" id="InputTitle" name=salary>
+    </div>
+
+    <button type="submit" class="btn btn-primary">ログイン</button>
+
+</form>
+{%endblock%}
+
+<!-- テンプレ読み込み終了 -->
+aaaaa
