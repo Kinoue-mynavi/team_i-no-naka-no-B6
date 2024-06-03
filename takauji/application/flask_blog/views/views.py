@@ -1,5 +1,17 @@
+##ブラウザでサーバーに対してリクエストがあった時の動作をまとめている
+# （ユーザーが起こしたアクションに対してどうこたえるか）
+# ログイン、ログアウトの動作を扱う（entryとまとめても大丈夫）
 from flask import request, redirect,url_for,render_template,flash,session
 from flask_blog import app
+from functools import wraps
+
+def login_required(view):
+    @wraps(view)
+    def inner(*args,**kwargs):
+        if not session.get('logged_in'):
+            return redirect(url_for('login'))
+        return view(*args,**kwargs)
+    return inner
 
 @app.route('/login',methods=['GET','POST'])
 def login():
@@ -10,6 +22,7 @@ def login():
             flash('パスワードが異なります')
         else:
             session['logged_in']=True
+            flash('')
             return redirect('/')
     return render_template('login.html')
 
