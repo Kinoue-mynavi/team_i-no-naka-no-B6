@@ -2,12 +2,20 @@ from flask import request, redirect, url_for, render_template, flash
 from flask_blog import app
 from flask_blog.domains.auth import get_session, create_session, delete_session, is_valid_password, is_valid_user_name
 from flask_blog.domains.entries import get_all_entries, create_entry
+from functools import wraps
+
+def login_required(view):
+    @wraps(view)
+    def inner(*args, **kwargs):
+        if not get_session(): # ログインして「いない」場合
+            flash("ログインが必要です")
+            return redirect(url_for("show_login"))
+        return view(*args, **kwargs) # ログインして「いる」場合
+    return inner
 
 @app.route('/')
+@login_required
 def show_entries():
-    if not get_session():
-        return redirect(url_for('show_login'))
-
     entries = get_all_entries()
     return render_template('entries/index.html', entries=entries)
 

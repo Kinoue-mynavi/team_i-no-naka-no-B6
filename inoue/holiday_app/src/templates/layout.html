@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <title>祝日マスタ管理</title>
+    {% block style %}{% endblock  %}
+</head>
+<body>
+    <h1 class="container">祝日マスタ管理</h1>
+    {% with messages = get_flashed_messages() %}
+        {% for message in messages %}
+            <p class="alert alert-info" role="alert">{{ message }}</p>
+        {% endfor %}
+    {% endwith %}
+
+    <div class="container">
+        {% block content %}{% endblock  %}
+    </div>
+</body>
+</html>
