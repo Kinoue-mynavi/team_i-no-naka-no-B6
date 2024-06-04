@@ -112,3 +112,4 @@ def calc_result():
     print("支給額:" + str(pay_amount)+"、税額:" + str(tax_amount))
 
     return render_template('entries/calc_result.html',salary=salary,pay_amount=pay_amount,tax_amount=tax_amount)
+    #salary=salaryは、ここのsalaryとcalc_result.htmlのsalaryは同じ値が来ることを意味する
