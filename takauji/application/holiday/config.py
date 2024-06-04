@@ -2,8 +2,8 @@
 #ここに書くことはほぼほぼコピペが多い
 DEBUG=True
 SECRET_KEY='secret key'
-USERNAME='John'
-PASSWORD='due123' #ユーザー名やパスワードは通常ここで設定することはない
+
+
 import os
 
 SQLALCHEMY_DATABASE_URI = "mysql+pymysql://{user}:{password}@{host}/{database}?charset=utf8".format(**{
